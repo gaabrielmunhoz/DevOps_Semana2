@@ -41,6 +41,7 @@ function App(){
       <Botao tipo='botao-zero' digito='0'/>
       <Botao tipo='botao-numero' digito='.'/>
       <Botao tipo='botao-operacao' digito='='/>
+      <p>Fazendo um pull request</p>
     </div>
   )
 }
