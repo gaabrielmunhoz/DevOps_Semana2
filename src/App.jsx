@@ -17,12 +17,15 @@ const Botao = (props) => {
   )
 }
 
+
 function App(){
   return (
     <div className='painel-botoes'>
+      <h1 className='titulo'>Calculadora</h1>
+      <h2 className='subtitulo'>Minha calculadora em React</h2>
       <Painel/>
       <Botao tipo='botao-ac' digito='AC'/>
-      <Botao tipo='botao-operacao' digito='/'/>
+      <Botao tipo='botao-operacao' digito='÷'/>
       <Botao tipo='botao-numero' digito='7'/>
       <Botao tipo='botao-numero' digito='8'/>
       <Botao tipo='botao-numero' digito='9'/>
