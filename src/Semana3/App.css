@@ -1,99 +1,725 @@
-* {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  text-align: center;
+/* ==================================================
+   PÁGINA
+================================================== */
+
+.pagina {
+  width: 100%;
+  min-height: 100vh;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
+  gap: 20px;
+
+  overflow: hidden;
+
+  transition:
+    background 0.55s ease,
+    color 0.55s ease;
 }
 
-.painel{
-    background-color: gray;
-    color: white;
-    width: 200px;
-    height: 100px;
-    text-align: right;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-    box-sizing: border-box;
+
+/* ==================================================
+   MODO ESCURO
+================================================== */
+
+.tema-escuro {
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(32, 76, 125, 0.42) 0%,
+      rgba(20, 49, 82, 0.22) 22%,
+      transparent 45%
+    ),
+
+    radial-gradient(
+      circle at 75% 72%,
+      rgba(20, 60, 105, 0.2) 0%,
+      transparent 40%
+    ),
+
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(16, 42, 75, 0.18) 0%,
+      transparent 45%
+    ),
+
+    linear-gradient(
+      145deg,
+      #07111e 0%,
+      #030812 52%,
+      #01050b 100%
+    );
+
+  color: white;
 }
 
-.painel-botoes{
-    width: 200px;
-    height: 350px;
+
+/* ==================================================
+   MODO CLARO
+================================================== */
+
+.tema-claro {
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.75) 18%,
+      transparent 42%
+    ),
+
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(125, 198, 255, 0.5) 0%,
+      rgba(175, 220, 255, 0.22) 25%,
+      transparent 48%
+    ),
+
+    radial-gradient(
+      circle at 62% 82%,
+      rgba(90, 190, 240, 0.25) 0%,
+      transparent 42%
+    ),
+
+    radial-gradient(
+      circle at 28% 65%,
+      rgba(185, 215, 255, 0.38) 0%,
+      transparent 40%
+    ),
+
+    linear-gradient(
+      145deg,
+      #f7fbff 0%,
+      #e3eff8 52%,
+      #eef7fc 100%
+    );
+
+  color: #152231;
 }
 
-.botao-ac{
-    width: 150px;
-    height: 50px;
-    background-color: whitesmoke;
-    font-size: 26px;
-    text-align: center;
-    float:left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-}
 
-.botao-operacao{
-    width: 50px;
-    height: 50px;
-    background-color: orange;
-    font-size: 26px;
-    text-align: center;
-    float:left;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-}
+/* ==================================================
+   SELETOR DE TEMA
+================================================== */
 
-.botao-numero{
-    width: 50px;
-    height: 50px;
-    background-color: whitesmoke;
-    font-size: 26px;
-    text-align: center;
-    float:left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-}
+.seletor-tema {
+  position: absolute;
 
-.botao-zero{
-    width: 100px;
-    height: 50px;
-    background-color: whitesmoke;
-    font-size: 26px;
-    text-align: center;
-    float:left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-}
+  top: 34px;
+  left: 50%;
 
-.titulo{
-  width: 200px;
-  font-size: 40px;
-  text-align: center;
+  transform: translateX(-50%);
+
   display: flex;
-  color: orange;
-  margin: 0;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  backdrop-filter:
+    blur(14px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(14px)
+    saturate(180%);
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
-.subtitulo{
-  width: 200px;
-  font-size: 16px;
+
+/* seletor escuro */
+
+.tema-escuro .seletor-tema {
+  background: rgba(255, 255, 255, 0.055);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* seletor claro */
+
+.tema-claro .seletor-tema {
+  background: rgba(255, 255, 255, 0.28);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(100, 130, 160, 0.08),
+    0 12px 35px rgba(70, 100, 130, 0.1);
+}
+
+
+/* ==================================================
+   LABELS DO TEMA
+================================================== */
+
+.tema-label {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  transition: color 0.4s ease;
+}
+
+
+.tema-escuro .tema-label {
+  color: rgba(255, 255, 255, 0.53);
+}
+
+
+.tema-claro .tema-label {
+  color: rgba(25, 42, 58, 0.6);
+}
+
+
+.icone-tema {
+  font-size: 14px;
+}
+
+
+/* ==================================================
+   SWITCH
+================================================== */
+
+.switch {
+  width: 51px;
+  height: 31px;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background: rgba(120, 120, 128, 0.45);
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.switch-ativo {
+  background: #34c759;
+
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.08),
+    0 0 16px rgba(52, 199, 89, 0.15);
+}
+
+
+.switch-bolinha {
+  width: 27px;
+  height: 27px;
+
+  position: absolute;
+
+  top: 2px;
+  left: 2px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f3f3f3
+    );
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.28);
+
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.switch-ativo .switch-bolinha {
+  transform: translateX(20px);
+}
+
+
+/* ==================================================
+   CARD DE VIDRO
+================================================== */
+
+.contador-card {
+  width: 420px;
+
+  position: relative;
+
+  padding: 50px 40px;
+
   text-align: center;
-  color: gray;
-  margin: 10px 0 20px 0;
+
+  border-radius: 32px;
+
+  overflow: hidden;
+
+  backdrop-filter:
+    blur(12px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(12px)
+    saturate(180%);
+
+  transition:
+    background 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+
+/* ==================================================
+   BORDA REFLEXIVA
+================================================== */
+
+.contador-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.3),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* linha de reflexo superior */
+
+.contador-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 18%;
+
+  width: 64%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.75),
+      transparent
+    );
+
+  pointer-events: none;
+
+  opacity: 0.7;
+}
+
+
+/* ==================================================
+   CARD ESCURO
+================================================== */
+
+.tema-escuro .contador-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(60, 110, 165, 0.08),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border:
+    1px solid rgba(150, 195, 240, 0.17);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.025),
+    0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ==================================================
+   CARD CLARO
+================================================== */
+
+.tema-claro .contador-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.055)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.68);
+
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    inset -1px -1px 0 rgba(95, 140, 175, 0.08),
+    0 30px 80px rgba(70, 105, 135, 0.13);
+}
+
+
+/* ==================================================
+   CONTADOR LABEL
+================================================== */
+
+.contador-label {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 14px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  transition: color 0.4s ease;
+}
+
+
+.tema-escuro .contador-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+.tema-claro .contador-label {
+  color: rgba(25, 45, 62, 0.53);
+}
+
+
+/* ==================================================
+   NÚMERO
+================================================== */
+
+.contador-numero {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 45px;
+
+  font-size: 105px;
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  letter-spacing: -5px;
+
+  transition:
+    color 0.4s ease,
+    text-shadow 0.4s ease;
+}
+
+
+.tema-escuro .contador-numero {
+  color: rgba(255, 255, 255, 0.97);
+
+  text-shadow:
+    0 0 35px rgba(100, 165, 255, 0.08);
+}
+
+
+.tema-claro .contador-numero {
+  color: #152332;
+
+  text-shadow:
+    0 8px 30px rgba(65, 95, 120, 0.08);
+}
+
+
+/* ==================================================
+   ÁREA DOS BOTÕES
+================================================== */
+
+.botoes {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  gap: 12px;
+}
+
+
+/* ==================================================
+   BOTÕES
+================================================== */
+
+.botao {
+  --x: 50%;
+  --y: 50%;
+
+  position: relative;
+
+  flex: 1;
+
+  padding: 15px 20px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  backdrop-filter:
+    blur(10px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(10px)
+    saturate(180%);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.botao:hover {
+  transform: translateY(-2px);
+}
+
+
+.botao:active {
+  transform: translateY(0) scale(0.97);
+}
+
+
+/* ==================================================
+   SUBTRAIR ESCURO
+================================================== */
+
+.tema-escuro .botao-subtrair {
+  color: white;
+
+  border:
+    1px solid rgba(255, 95, 115, 0.5);
+
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0),
+      transparent 70%
+    ),
+    rgba(215, 50, 78, 0.34);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 8px 25px rgba(160, 25, 45, 0.11);
+}
+
+
+.tema-escuro .botao-subtrair:hover {
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0.45),
+      transparent 70%
+    ),
+    rgba(230, 55, 82, 0.48);
+
+  border-color:
+    rgba(255, 130, 145, 0.68);
+}
+
+
+/* ==================================================
+   ADICIONAR ESCURO
+================================================== */
+
+.tema-escuro .botao-adicionar {
+  color: white;
+
+  border:
+    1px solid rgba(70, 235, 135, 0.5);
+
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0),
+      transparent 70%
+    ),
+    rgba(25, 195, 100, 0.38);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 8px 25px rgba(25, 135, 75, 0.11);
+}
+
+
+.tema-escuro .botao-adicionar:hover {
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0.45),
+      transparent 70%
+    ),
+    rgba(30, 220, 110, 0.52);
+
+  border-color:
+    rgba(100, 250, 160, 0.7);
+}
+
+
+/* ==================================================
+   SUBTRAIR CLARO
+================================================== */
+
+.tema-claro .botao-subtrair {
+  color: #852333;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.8);
+
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0),
+      transparent 70%
+    ),
+    rgba(255, 85, 115, 0.52);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 8px 24px rgba(190, 45, 70, 0.1);
+}
+
+
+.tema-claro .botao-subtrair:hover {
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0.72),
+      transparent 70%
+    ),
+    rgba(255, 75, 105, 0.66);
+}
+
+
+/* ==================================================
+   ADICIONAR CLARO
+================================================== */
+
+.tema-claro .botao-adicionar {
+  color: #0d6035;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.82);
+
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0),
+      transparent 70%
+    ),
+    rgba(35, 220, 120, 0.54);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 8px 24px rgba(30, 150, 85, 0.1);
+}
+
+
+.tema-claro .botao-adicionar:hover {
+  background:
+    radial-gradient(
+      circle 55px at var(--x) var(--y),
+      rgba(255, 255, 255, 0.72),
+      transparent 70%
+    ),
+    rgba(25, 230, 120, 0.68);
+}
+
+
+/* ==================================================
+   RESPONSIVIDADE
+================================================== */
+
+@media (max-width: 520px) {
+
+  .contador-card {
+    width: calc(100% - 32px);
+
+    padding: 45px 25px;
+  }
+
+  .contador-numero {
+    font-size: 90px;
+  }
+
+  .seletor-tema {
+    top: 20px;
+  }
+
+  .tema-label {
+    font-size: 10px;
+  }
+
+}
+
+.atividade-info {
+  max-width: 500px;
+
+  text-align: center;
+
+  font-size: 20px;
+
+  line-height: 1.5;
+
+  transition: color 0.4s ease;
+}
+
+.tema-escuro .atividade-info {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.tema-claro .atividade-info {
+  color: rgba(20, 40, 60, 0.5);
 }
